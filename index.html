@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" width="device-width, initial-scale=1">
+	<meta name="description" content="Detect the Facebook profile picture from id user.">
+	<title>Facebook Profile Picture</title>
+	<style>
+		body { font-family: sans-serif }
+		form { margin-bottom: .5em }
+	</style>
+</head>
+<body>
+
+
+	<form id="form" role="form">
+		<label for="user-id">user Id:</label>
+		<input type="number"  id="user-id" placeholder="100001636112653" required>
+
+		<label for="img-width">image width:</label>
+		<input type="number" id="img-width" placeholder="500">
+
+		<label for="img-height">image height:</label>
+		<input type="number" id="img-height" placeholder="500">
+
+		<button type="submit">Show image</button>
+	</form>
+
+	<img src="" id="user-img" alt="facebook user image">
+
+	<script>
+		const form 	= document.getElementById("form"),
+			  userId = document.getElementById("user-id"),
+			  imgWidth = document.getElementById("img-width"),
+			  imgHeight = document.getElementById("img-height"),
+			  userImg = document.getElementById("user-img");
+
+
+		function detectImg() {
+			userImg.src = `https://graph.facebook.com/${userId.value}/picture?width=${imgWidth.value}&height=${imgHeight.value}`;
+		}
+		form.addEventListener("submit", function (e) {
+			e.preventDefault();
+			detectImg();
+		});  
+	</script>
+
+</body>
+</html>

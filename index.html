@@ -26,18 +26,22 @@
 		<button type="submit">Show image</button>
 	</form>
 
-	<img src="" id="user-img" alt="facebook user image">
+	<img src="" id="user-img" alt="facebook user image"> <br>
+	<a href="" id="download" download>Download</a>
 
 	<script>
 		const form 	= document.getElementById("form"),
 			  userId = document.getElementById("user-id"),
 			  imgWidth = document.getElementById("img-width"),
 			  imgHeight = document.getElementById("img-height"),
-			  userImg = document.getElementById("user-img");
+			  userImg = document.getElementById("user-img"),
+			  download = document.getElementById("download");
 
 
 		function detectImg() {
 			userImg.src = `https://graph.facebook.com/${userId.value}/picture?width=${imgWidth.value}&height=${imgHeight.value}`;
+			download.href = `https://graph.facebook.com/${userId.value}/picture?width=${imgWidth.value}&height=${imgHeight.value}`;
+
 		}
 		form.addEventListener("submit", function (e) {
 			e.preventDefault();
